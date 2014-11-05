@@ -2,7 +2,7 @@ int switchPin = 8;
 int ledPin = 13; 
 boolean lastButton = LOW; 
 boolean currentButton = LOW; 
-boolean ledOn = false;
+boolean ledOn = false; // boolean values store either 1 or 0, HIGH or LOW, true or false
 
 void setup()
 {
@@ -13,9 +13,9 @@ void setup()
 boolean debounce (boolean last)
 {
   boolean current = digitalRead(switchPin);
-  if(last != current)
+  if(last != current) // Only bother changing if the button state has changed different to the state of the light
   {
-    delay(5); 
+    delay(5); // delaying here accounts for the bouncing by making sure the button is fully stable before updating
     current = digitalRead(switchPin); 
   }
   return current; 
@@ -23,12 +23,12 @@ boolean debounce (boolean last)
 
 void loop()
 {
-  currentButton = debounce(lastButton);  
-  if(lastButton == LOW && currentButton == HIGH)
+  currentButton = debounce(lastButton);  // add debounce to our loop
+  if(lastButton == LOW && currentButton == HIGH) // if difference, shift LED state variable
   {
     ledOn = !ledOn;
   }
 
     lastButton = currentButton;
-    digitalWrite(ledPin,ledOn); 
+    digitalWrite(ledPin,ledOn); // write LED state variable to the LED pin.
 }
