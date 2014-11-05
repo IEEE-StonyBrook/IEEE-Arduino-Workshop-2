@@ -1,0 +1,1 @@
+In this workshop, we took the idea with our previous workshop and worked out how to fix a major problem with our setup. Previously, it would bounce like mad such that a button press did not guarantee that an updated voltage state. This time, we figured out how to debounce the signal so that it would work as expected.
